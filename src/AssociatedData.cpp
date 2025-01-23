@@ -169,6 +169,7 @@ void LoadTrackEvent(CustomJSONData::CustomEventData const* customEventData, Trac
 void readBeatmapDataAD(CustomJSONData::CustomBeatmapData* beatmapData) {
   static auto* customObstacleDataClass = classof(CustomJSONData::CustomObstacleData*);
   static auto* customNoteDataClass = classof(CustomJSONData::CustomNoteData*);
+  static auto* customSliderDataClass = classof(CustomJSONData::CustomSliderData*);
 
   BeatmapAssociatedData& beatmapAD = getBeatmapAD(beatmapData->customData);
   bool v2 = beatmapData->v2orEarlier;
@@ -220,6 +221,9 @@ void readBeatmapDataAD(CustomJSONData::CustomBeatmapData* beatmapData) {
     } else if (beatmapObjectData->klass == customNoteDataClass) {
       auto noteData = (CustomJSONData::CustomNoteData*)beatmapObjectData;
       customDataWrapper = noteData->customData;
+    } else if (beatmapObjectData->klass == customSliderDataClass) {
+      auto sliderData = (CustomJSONData::CustomSliderData*)beatmapObjectData;
+      customDataWrapper = sliderData->customData;
     } else {
       continue;
     }
