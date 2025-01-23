@@ -66,6 +66,8 @@ struct TempPointData {
       : copiedList(std::move(copiedList)), time(time) {}
 };
 
+
+
 PointDefinition::PointDefinition(rapidjson::Value const& value) {
   std::vector<TempPointData> tempPointDatas;
   sbo::small_vector<float, 5> alternateList;
